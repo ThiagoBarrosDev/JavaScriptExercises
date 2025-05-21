@@ -1,33 +1,22 @@
-/**
- * Function that traverses a string and returns an array where:
- * - true for alphanumeric characters
- * - false for non-alphanumeric characters
- * @param {string} str - The input string
- * @return {boolean[]} - Array of boolean values
- */
-function checkAlphanumeric(str) {
-  const result = [];
+function checkPalindrome(input) {
   let l = 0;
-  let r = str.length - 1;
+  let r = input.length - 1;
 
   while (l < r) {
-    if (!result.push(/[a-zA-Z0-9]/.test(str[l]))) {
-      l++;
-    } else if (!result.push(/[a-zA-Z0-9]/.test(str[r]))) {
-      r--;
-    } else if (str[l].toLowerCase() !== str[r].toLowerCase()) {
-      return false;
+    if (!/[a-zA-Z0-9]/.test(input[l])) {
+      l += 1;
+    } else if (!/[a-zA-Z0-9]/.test(input[r])) {
+      r -= 1;
+    } else if (input[l].toLowerCase() !== input[r].toLowerCase()) {
+      console.log("NO");
+      return;
     } else {
-      l++;
-      r--;
+      l += 1;
+      r -= 1;
     }
-    return true;
   }
-
-  return result;
+  console.log("YES");
+  return;
 }
 
-// Example usage
-const testStr = "aa  v s  aa";
-const result = checkAlphanumeric(testStr);
-console.log(result);
+checkPalindrome("race a car");
